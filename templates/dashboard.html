@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+    <form method="POST">
+    <label><b>Select Anomaly Threshold</b></label><br>
+    <input type="range" name="threshold" min="0.1" max="1.0" step="0.05"
+           value="{{ threshold }}"
+           oninput="this.nextElementSibling.value = this.value">
+    <output>{{ threshold }}</output>
+    <br><br>
+    <button class="btn">Update Analysis</button>
+</form>
+<hr>
+
+
+    <h1>Engine Health Dashboard</h1>
+
+    <div class="card">
+    <h3>Engine Health Comparison</h3>
+    <img src="data:image/png;base64,{{ bar_graph }}" class="graph">
+</div>
+
+
+    <div class="card">
+    <h3>Selected Engine – Error vs Cycle</h3>
+    <img src="data:image/png;base64,{{ error_graph }}" class="graph">
+</div>
+
+
+    <div class="grid">
+        <div class="stat">
+            <h4>Threshold</h4>
+            <p>{{ threshold }}</p>
+        </div>
+        <div class="stat">
+            <h4>Health Index</h4>
+            <p>{{ health_index }}</p>
+        </div>
+        <div class="stat">
+            <h4>Estimated RUL</h4>
+            <p>{{ rul }} cycles</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Anomalous Cycles</h3>
+        {% if faulty_cycles %}
+            <p>{{ faulty_cycles }}</p>
+        {% else %}
+            <p>No anomalies detected</p>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
