@@ -1,3 +1,4 @@
+another branch
 # Multisensor LSTM Anomaly Detection
 
 A web-based application for detecting anomalies in multisensor time-series data using Long Short-Term Memory (LSTM) neural networks. This project implements an unsupervised anomaly detection approach suitable for industrial IoT, equipment monitoring, and sensor data analysis.
